@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Trips</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-list">
+    <!-- glass wind container -->
+    <div class="glass-container">
+        <!-- User information and logout button -->
+        <div id="userBar" class="user-bar">
+            <span id="currentUserDisplay"></span>
+            <button id="btnLogout" class="btn btn-small">Logout</button>
+        </div>
+
+        <h2>My Trips</h2>
+
+        <!-- Filtering and searching -->
+        <label for="filterDestination">Filter by Destination:</label>
+        <select id="filterDestination" class="input">
+            <option value="">All Destinations</option>
+        </select>
+
+        <label for="tripFilter">Filter by Trip Status:</label>
+        <select id="tripFilter" class="input">
+            <option value="all">All Trips</option>
+            <option value="upcoming">Upcoming Trips</option>
+            <option value="completed">Completed Trips</option>
+        </select>
+
+        <label for="searchInput">Search Trips:</label>
+        <input type="text" id="searchInput" class="input" placeholder="Search trips..." />
+
+        <!-- Travel itinerary -->
+        <ul id="tripList" class="trip-list"></ul>
+
+        <!-- Add button -->
+        <div class="btn-group">
+            <a href="add-trip.html" class="btn">+ Add Trip</a>
+            <button id="viewExpenseBtn" class="btn">View Expense</button>
+        </div>
+    </div>
+
+    <!-- Script introduction -->
+    <script src="cordova.js"></script>
+    <script type="module">
+        import { userDB } from './js/localstorage.js';
+        import './js/auth.js'; // Introduce authentication logic
+        import './js/trip-db.js';
+        import './js/trip.js';
+    </script>
+</body>
+</html>

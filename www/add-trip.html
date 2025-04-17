@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Trip</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="bg-trip">
+
+<!-- glass wind container -->
+<div class="glass-container">
+    <h2>Add New Trip</h2>
+
+    <!-- Trip form -->
+    <form id="tripForm">
+        <label for="tripName">Trip Name:</label>
+        <input type="text" id="tripName" placeholder="Trip Name *" required />
+        <label for="tripDestination">Destination:</label>
+        <input type="text" id="tripDestination" placeholder="Destination *" required />
+        <label for="tripDate">Date:</label>
+        <input type="date" id="tripDate" placeholder="Date *" required />
+        <label for="tripNotes">Description:</label>
+        <textarea id="tripNotes" placeholder="Description (optional)"></textarea>
+
+        <button type="submit" class="btn">Save Trip</button>
+    </form>
+
+    <div class="btn-group">
+        <a href="trip-list.html" class="btn-cancel">Cancel</a>
+    </div>
+</div>
+
+<script src="cordova.js"></script> <!-- Cordova plugin -->
+<script type="module">
+    import StorageHelper from './js/localstorage-helpers.js';
+    import './js/trip-db.js';
+    import './js/trip.js';
+
+    document.addEventListener("deviceready", async () => {
+        try {
+            const currentUser = await (async () => {
+                const users = StorageHelper.get('users');
+                const loggedInUser = users.find(u => u.isLoggedIn);
+                return loggedInUser? loggedInUser.username : null;
+            })();
+            if (currentUser) {
+                // Can use currentUser here to associate travel information.
+            }
+        } catch (error) {
+            console.error('Error getting current user:', error);
+        }
+    });
+</script>
+</body>
+
+</html>

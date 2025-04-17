@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View All Expenses</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        .user-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+
+        .expense-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .expense-list li {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body class="bg-expense">
+<div class="glass-container">
+    <!-- User display + Exit -->
+    <div class="user-bar">
+        <span id="currentUserDisplay"></span>
+        <button id="btnLogout" class="btn btn-small">Logout</button>
+    </div>
+
+    <h2>All Expenses</h2>
+
+    <!-- cost list -->
+    <ul id="expenseList" class="expense-list"></ul>
+
+    <div class="btn-group">
+        <a href="add-expense.html" class="btn">+ Add Expense</a>
+    </div>
+</div>
+
+<script src="cordova.js"></script> <!-- Cordova Plugin -->
+<script type="module">
+    import StorageHelper from './js/localstorage-helpers.js';
+    import './js/expense-db.js';
+    import './js/view-all-expenses.js';
+    import './js/auth-check.js';
+</script>
+</body>
+
+</html>

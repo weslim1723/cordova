@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* My Style */
+        .success-message {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .error-message {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body class="bg-login">
+<div class="glass-container">
+    <form id="loginForm" class="form">
+        <h2>Login</h2>
+        <label for="loginUsername">Username:</label>
+        <input type="text" id="loginUsername" placeholder="Username" required>
+        <label for="loginPassword">Password:</label>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <button type="submit" class="btn">Login</button>
+        <p>
+            <span>No account? </span>
+            <a href="register.html" class="btn-link">Register</a>
+        </p>
+    </form>
+</div>
+<!-- Success/error message containers -->
+<div id="successMessage" class="success-message" style="display: none;"></div>
+<div id="errorMessage" class="error-message" style="display: none;"></div>
+
+<!-- Scripts -->
+<script src="cordova.js"></script>
+<script type="module" src="js/login.js"></script>
+</body>
+</html>

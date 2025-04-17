@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trip Detail</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="bg-trip">
+
+<div class="glass-container">
+    <h2>Trip Detail</h2>
+
+    <!-- ✅ Trip information area -->
+    <div id="tripDetail" class="trip-detail-card"></div>
+
+    <!-- ✅ Cost summary -->
+    <h3 style="margin-top: 24px;">Expenses Summary</h3>
+    <div id="expenseSummary" class="trip-detail-card"></div>
+
+    <!-- ✅ cost breakdown -->
+    <ul id="expenseListInTrip" class="trip-list"></ul>
+
+    <!-- ✅ button group -->
+    <div class="btn-group">
+        <a id="btnViewAllExpenses" href="#" class="btn">View All Expenses</a>
+        <a href="trip-list.html" class="btn">← Back to List</a>
+    </div>
+</div>
+
+<script src="cordova.js"></script> <!-- Cordova Plugin -->
+<script type="module">
+    import StorageHelper from './js/localstorage-helpers.js';
+    import './js/trip-db.js';
+    import './js/expense-db.js';
+    import './js/trip-detail.js';
+    import './js/auth-check.js';
+</script>
+</body>
+
+</html>

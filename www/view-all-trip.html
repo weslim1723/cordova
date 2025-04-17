@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View All Trips</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        .user-bar {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 20px;
+          }
+
+        .btn-small {
+              padding: 8px 16px;
+              font-size: 14px;
+          }
+
+        .trip-list {
+              list-style-type: none;
+              padding: 0;
+          }
+
+        .trip-list li {
+              border: 1px solid #ccc;
+              padding: 10px;
+              margin-bottom: 10px;
+          }
+    </style>
+</head>
+
+<body class="bg-list">
+<div class="glass-container">
+    <!-- User display + Exit -->
+    <div class="user-bar">
+        <span id="currentUserDisplay"></span>
+        <button id="btnLogout" class="btn btn-small">Logout</button>
+    </div>
+
+    <h2>All Trips</h2>
+
+    <!-- Travel list -->
+    <ul id="tripList" class="trip-list"></ul>
+
+    <div class="btn-group">
+        <a href="add-trip.html" class="btn">+ Add Trip</a>
+    </div>
+</div>
+
+<script src="cordova.js"></script> <!-- Cordova Plugin -->
+<script type="module">
+    import StorageHelper from './js/localstorage-helpers.js';
+    import './js/trip-db.js';
+    import './js/view-all-trips.js';
+    import './js/auth-check.js';
+</script>
+</body>
+
+</html>

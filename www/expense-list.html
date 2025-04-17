@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Expense List</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <style>
+        .user-bar {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 20px;
+        }
+        .btn-small {
+          padding: 8px 16px;
+          font-size: 14px;
+        }
+    </style>
+</head>
+<body class="bg-expense">
+<div class="glass-container">
+
+    <!-- ✅ Login information bar: Username + Logout -->
+    <div id="userBar" class="user-bar">
+        <span id="currentUserDisplay"></span>
+        <button id="btnLogout" class="btn btn-small">Logout</button>
+    </div>
+
+    <h2>My Expenses</h2>
+
+    <!-- ✅ Trip filter dropdown -->
+    <label for="tripFilter">Filter by Trip:</label>
+    <select id="tripFilter" class="input">
+        <option value="">All Trips</option>
+        <!-- JS dynamic filling -->
+    </select>
+
+    <!-- ✅ Type filtering -->
+    <label for="filterType">Filter by Type:</label>
+    <select id="filterType" class="input">
+        <option value="">All Types</option>
+        <option value="Food">Food</option>
+        <option value="Transport">Transport</option>
+        <option value="Accommodation">Accommodation</option>
+    </select>
+
+    <!-- ✅ search box -->
+    <label for="expenseSearch">Search Expenses:</label>
+    <input type="text" id="expenseSearch" placeholder="Search expenses..." />
+
+    <!-- ✅ total amount -->
+    <p id="totalAmount" class="total">Total: $0.00</p>
+
+    <!-- ✅ list container -->
+    <ul id="expenseList" class="trip-list"></ul>
+
+    <!-- ✅ Operation button group -->
+    <div class="btn-group">
+        <a href="add-expense.html" class="btn">+ Add Expense</a>
+        <a href="trip-list.html" class="btn">← Back to Trips</a>
+        <button class="btn" onclick="downloadExpenses()">⬇️ Export CSV</button>
+        <button class="btn btn-upload" id="btnUpload">⇧ Upload Expenses</button>
+    </div>
+</div>
+
+<script src="cordova.js"></script> <!-- Cordova plugin -->
+<script type="module">
+    import StorageHelper from './js/localstorage-helpers.js';
+    import './js/expense-db.js';
+    import './js/trip-db.js';
+    import './js/expense.js';
+    import './js/auth-check.js';
+</script>
+</body>
+</html>

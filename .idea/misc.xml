@@ -1,0 +1,10 @@
+<project version="4">
+  <component name="ProjectResources">
+    <resource url="http://cordova.apache.org/ns/1.0" location="" />
+    <resource url="http://schemas.android.com/apk/res/android" location="" />
+    <resource url="http://www.w3.org/ns/widgets" location="" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="jbr-21" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

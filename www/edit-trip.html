@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Trip</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="bg-trip">
+
+<div class="glass-container">
+    <h2 id="editTitle">Edit Trip</h2>
+
+    <form id="editTripForm" class="form">
+        <label for="editTripName">Trip Name:</label>
+        <input type="text" id="editTripName" placeholder="Trip Name *" required />
+        <label for="editDestination">Destination:</label>
+        <input type="text" id="editDestination" placeholder="Destination *" required />
+        <label for="editDate">Date:</label>
+        <input type="date" id="editDate" placeholder="Date *" required />
+
+        <label for="editRisk">Risk Assessment:</label>
+        <div class="radio-group">
+            <label><input type="radio" name="editRisk" value="Yes" /> Yes</label>
+            <label><input type="radio" name="editRisk" value="No" /> No</label>
+        </div>
+
+        <label for="editDescription">Description:</label>
+        <textarea id="editDescription" placeholder="Description (optional)"></textarea>
+        <label for="editTransport">Transport:</label>
+        <input type="text" id="editTransport" placeholder="Transport (optional)" />
+        <label for="editDuration">Duration:</label>
+        <input type="text" id="editDuration" placeholder="Duration (optional)" />
+
+        <button type="submit" class="btn">Update Trip</button>
+    </form>
+
+    <div class="btn-group">
+        <a href="trip-list.html" class="btn">← Cancel</a>
+    </div>
+</div>
+
+<script src="cordova.js"></script> <!-- Cordova plugin -->
+<script type="module">
+    import StorageHelper from './js/localstorage-helpers.js';
+    import './js/trip-db.js';
+    import './js/edit-trip.js';
+    import './js/auth-check.js';
+
+    // Simple debugging information to check if all key elements exist.
+    const elementsToCheck = [
+        'editTitle',
+        'editTripForm',
+        'editTripName',
+        'editDestination',
+        'editDate',
+        'editRisk',
+        'editDescription',
+        'editTransport',
+        'editDuration'
+    ];
+
+    elementsToCheck.forEach((id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            console.log(`Element with id "${id}" exists.`);
+        } else {
+            console.error(`Element with id "${id}" does not exist.`);
+        }
+    });
+</script>
+</body>
+
+</html>

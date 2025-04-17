@@ -1,0 +1,98 @@
+<!-- add-expense.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Add Expense</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        .user-bar {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 20px;
+        }
+        .btn-small {
+          padding: 8px 16px;
+          font-size: 14px;
+        }
+    </style>
+</head>
+<body class="bg-expense">
+<div class="glass-container">
+    <!-- ✅ User display + Exit -->
+    <div class="user-bar">
+        <span id="currentUserDisplay"></span>
+        <button id="btnLogout" class="btn btn-small">Logout</button>
+    </div>
+
+    <h2>Add Expense</h2>
+
+    <form id="expenseForm" class="form">
+        <label for="expenseType">Expense Type:</label>
+        <input type="text" id="expenseType" placeholder="Type (e.g. Meal, Transport)" required />
+        <label for="expenseAmount">Expense Amount:</label>
+        <input type="number" id="expenseAmount" placeholder="Amount" step="0.01" required />
+        <label for="expenseTime">Expense Time:</label>
+        <input type="date" id="expenseTime" required />
+        <label for="expenseComments">Expense Comments:</label>
+        <textarea id="expenseComments" placeholder="Comments (optional)"></textarea>
+        <input type="hidden" id="tripIndex" />
+        <button type="submit" class="btn">Save Expense</button>
+    </form>
+
+    <div class="btn-group">
+        <a href="expense-list.html" class="btn">← Back to List</a>
+    </div>
+</div>
+
+<script src="cordova.js"></script> <!-- Cordova plugin -->
+<script type="module">
+    import StorageHelper from './js/localstorage-helpers.js';
+
+    document.addEventListener('DOMContentLoaded', async function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const tripIndex = urlParams.get('tripIndex');
+        if (tripIndex) {
+            document.getElementById('tripIndex').value = tripIndex;
+        }
+
+        const form = document.getElementById('expenseForm');
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const expenseType = document.getElementById('expenseType').value;
+            const expenseAmount = parseFloat(document.getElementById('expenseAmount').value);
+            const expenseTime = document.getElementById('expenseTime').value;
+            const expenseComments = document.getElementById('expenseComments').value;
+            const tripIndex = document.getElementById('tripIndex').value;
+
+            try {
+                const users = StorageHelper.get('users');
+                const currentUser = users.find(u => u.isLoggedIn);
+                if (currentUser) {
+                    const newExpense = {
+                        type: expenseType,
+                        amount: expenseAmount,
+                        time: expenseTime,
+                        comments: expenseComments,
+                        tripId: parseInt(tripIndex),
+                        username: currentUser.username
+                    };
+                    StorageHelper.add('expenses', newExpense);
+                    alert("Expense saved!");
+                    window.location.href = `expense-list.html?tripIndex=${tripIndex}`;
+                } else {
+                    console.error('User not logged in');
+                }
+            } catch (error) {
+                console.error('Error saving expense:', error);
+                alert('Failed to save expense. Please try again.');
+            }
+        });
+    });
+</script>
+<!-- ✅ Public login detection -->
+<script src="js/auth-check.js"></script>
+</body>
+</html>
